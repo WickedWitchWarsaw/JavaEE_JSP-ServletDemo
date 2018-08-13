@@ -1,5 +1,6 @@
 package com.wickedwitch;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +25,21 @@ public class Servlet01 extends HttpServlet {
         String lastName = req.getParameter("lname");
         String fullName = lastName + ", " + firstName;
 
+        req.setAttribute("name", fullName);
+
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/output.jsp");
+        requestDispatcher.forward(req, resp);
+
+
+
+        /*
+        //redirect response to url:
+        resp.sendRedirect("http://www.google.com");
+        resp.sendRedirect("test.html");
+
         PrintWriter printWriter = resp.getWriter();
         //HTML code inside servlet
         printWriter.println("<html><body><h1> Hello " + fullName + "</h1></body></html>");
-
+        */
     }
 }
