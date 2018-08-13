@@ -5,22 +5,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Servlet01 extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //default method used if no other is specified in the html file
         String firstName = req.getParameter("fname");
         String lastName = req.getParameter("lname");
         String fullName = lastName + ", " + firstName;
-        System.out.println(fullName);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //app used POST method - specified in index.html
         String firstName = req.getParameter("fname");
         String lastName = req.getParameter("lname");
         String fullName = lastName + ", " + firstName;
-        System.out.println(fullName);
+
+        PrintWriter printWriter = resp.getWriter();
+        //HTML code inside servlet
+        printWriter.println("<html><body><h1> Hello " + fullName + "</h1></body></html>");
+
     }
 }
