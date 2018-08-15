@@ -8,6 +8,7 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
+
     <servlet>
         <servlet-name>Servlet01</servlet-name>
         <servlet-class>com.wickedwitch.Servlet01</servlet-class>

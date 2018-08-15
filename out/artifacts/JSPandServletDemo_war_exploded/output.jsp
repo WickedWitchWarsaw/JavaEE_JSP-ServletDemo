@@ -14,8 +14,50 @@
 
  <h2>JSP output file</h2>
  <p>
-     Name: <%= request.getAttribute("name")%>
+     Name: <%= request.getAttribute("name") %> - JSP Expression
  </p>
+
+
+ <p>LOGICAL EXPRESSIONS</p>
+ <p> 2 + 2 = <%= 2 + 2 %> </p>
+ <p> 1 < 2 T/F --> <%= 1 < 2 %> </p>
+
+
+ <p>LOOPS</p>
+ <%
+ for(int i = 0; i < 5; i++){
+     out.print("<p>Value of i = " + i + "</p>");
+ }
+
+ %>
+
+ <br/>
+ <br/>
+
+ <p>
+
+     Name: <%
+
+    String fullname =  request.getAttribute("name").toString();
+    out.println(fullname);
+
+     %> - JSP Scriplets
+
+ </p>
+
+<br/>
+<br/>
+
+ <p>JSP Declarations "!"</p>
+
+ <%!
+
+     int calLenght(String s){
+         return s.length();
+     }
+ %>
+
+ <p>The length of the String <%= calLenght("Hello JSP Expression")%></p>
 
 </body>
 </html>
